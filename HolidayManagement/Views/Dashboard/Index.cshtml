@@ -1,0 +1,87 @@
+﻿@model HolidayManagement.Models.DashboardViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Model.Test
+
+<h1>This is the Dashboard!</h1>
+<div class="navbar-collapse collapse">
+    <!--
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Users", "Users", "Dashboard")</li>
+        <li>@Html.ActionLink("My Calendar", "Index", "Home")</li>
+        <li>@Html.ActionLink("Group Management", "Index", "Home")</li>
+        <li>@Html.ActionLink("Settings", "Index", "Home")</li>
+    </ul>
+        -->
+    <ul class="nav navbar-nav">
+        <li><a data-toggle="tab" href="#users">Users</a></li>
+        <li><a data-toggle="tab" href="#mycalendar">My Calendar</a></li>
+        <li><a data-toggle="tab" href="#groupmanagement">Group Management</a></li>
+        <li><a data-toggle="tab" href="#settings">Settings</a></li>
+    </ul>
+</div>
+
+
+
+<div class="tab-content">
+    <div id="users" class="tab-pane fade in active">
+        @Html.Partial("Uusers")
+    </div>
+    <div id="mycalendar" class="tab-pane fade">
+        @Html.Partial("MyCalendar")
+    </div>
+    <div id="groupmanagement" class="tab-pane fade">
+        @Html.Partial("GroupManagement")
+    </div>
+    <div id="settings" class="tab-pane fade">
+       @Html.Partial("Settings")
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <h3>HOME</h3>
+        <p>Some content.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+        <h3>Menu 1</h3>
+        <p>Some content in menu 1.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+        <h3>Menu 2</h3>
+        <p>Some content in menu 2.</p>
+    </div>
+</div>
+    -->
+
+<span data-bind="text: test"></span>
+<script type="text/javascript" src="~/Scripts/Dashboard/DashboardModel.js"></script>
+<script type="text/javascript">
+    InitializeDashboardModel(@Html.Raw(Json.Encode(Model)));
+</script>
