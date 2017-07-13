@@ -1,4 +1,5 @@
 ﻿using HolidayManagement.Models;
+using HolidayManagement.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,28 @@ namespace HolidayManagement.Controllers
     [Authorize]
     public class DashboardController : Controller
     {
+        public UserDetailsRepository UserDetailsRepo = new UserDetailsRepository();
+
+        //////////////////////////////////////
+        public TeamRepository TeamRepo = new TeamRepository();
+        //////////////////////////////////////
+
+
         // GET: Dashboard
         public ActionResult Index()
         {
             DashboardViewModel dashboardVM = new DashboardViewModel()
             {
-                Test = "orice"
+                Test = "Test Value"
             };
 
-            return View(dashboardVM);
+            dashboardVM.UsersList = UserDetailsRepo.GetUsers();
+
+            //////////////////////////////////////            
+            dashboardVM.Teams = TeamRepo.GetTeams();
+            //////////////////////////////////////
+            //dashboardVM.Test = dashboardVM.UsersList[0].FirstName;
+            return View("Index", dashboardVM);
         }
         public ActionResult Users()
         {

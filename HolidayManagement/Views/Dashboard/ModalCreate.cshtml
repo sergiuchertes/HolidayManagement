@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "";
+}
+
+<hr />
+<hr/>
+<hr />
+<hr />
+<hr />
+<hr />
+<span>The team ID is: <span data-bind="foreach: teams">
+    <span data-bind="text: ID"></span>
+    <br>
+    <span data-bind="text: name"></span>
+    <br>
+    </span><br></span>
+
+<hr />
+<hr />
+<hr />
+<hr />
+<span>The passed text is: <span data-bind="text: manageUser.firstName"></span><br></span>
+<span>The second passed text is: <span data-bind="text: manageUser.lastName"></span><br></span>
+<span>The hire date is:<span data-bind="text: manageUser.hireDate"></span> </span>
+<span>the max days is: <span data-bind="text: manageUser.maxDays"></span></span>
+<hr />
+<form>
+    First name:<br>
+    <input type="text" name="firstname" data-bind="value: manageUser.firstName"><br>
+
+    Last name:<br>
+    <input type="text" name="lastname" data-bind="value: manageUser.lastName"><br>
+
+    Hire date:<br>
+    <input type="text" name="hiredate" data-bind="value: manageUser.hireDate"><br>
+
+    Maximum count of available days:<br>
+    <input type="number" name="maxavailabledays" data-bind="value: manageUser.maxDays"><br>
+
+    Team:<br>
+    <input list="browsers"  name="browsers">
+    <datalist id="browsers" data-bind="foreach: teams">
+        <option data-bind="value: name">
+       
+       
+       
+       
+    </datalist> <br>
+
+</form>
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create</button>
+
+<hr />

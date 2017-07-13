@@ -10,6 +10,7 @@ namespace HolidayManagement.Repository.Models
         [Key]
         public int ID { get; set; }
 
+        
         public string UserID { get; set; }
 
         public string FirstName { get; set; }
@@ -27,5 +28,6 @@ namespace HolidayManagement.Repository.Models
 
         [ForeignKey("UserID")]
         public virtual IdentityUser AspNetUser { get; set; }
+
     }
 }

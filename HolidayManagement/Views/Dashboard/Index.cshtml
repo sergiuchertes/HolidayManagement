@@ -5,6 +5,7 @@
 
 @Model.Test
 
+
 <h1>This is the Dashboard!</h1>
 <div class="navbar-collapse collapse">
     <!--
@@ -79,9 +80,29 @@
     </div>
 </div>
     -->
-
+<!--
 <span data-bind="text: test"></span>
+<span data-bind="text: aux"></span>
+<hr/>
+<hr />
+
+<table>
+    <thead>
+        <tr><th>First name</th><th>Last name</th></tr>
+    </thead>
+    <tbody data-bind="foreach: users">
+        <tr>
+            <td data-bind="text: firstName"></td>
+            <td data-bind="text: lastName"></td>
+        </tr>
+    </tbody>
+</table>
+  
+<hr />
+<hr />
 <script type="text/javascript" src="~/Scripts/Dashboard/DashboardModel.js"></script>
+<script type="text/javascript" src="~/Scripts/Dashboard/UserModel.js"></script>
 <script type="text/javascript">
     InitializeDashboardModel(@Html.Raw(Json.Encode(Model)));
 </script>
+    -->
