@@ -170,6 +170,7 @@ namespace HolidayManagement.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -196,6 +197,11 @@ namespace HolidayManagement.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+
+
+
 
         //
         // GET: /Account/ConfirmEmail
@@ -446,7 +452,97 @@ namespace HolidayManagement.Controllers
             }
 
             base.Dispose(disposing);
+        } 
+
+
+
+
+
+
+
+
+
+        [HttpPost]
+        public async Task<ActionResult> CreateUser(RegisterViewModel model)
+        {      
+            
+            if (ModelState.IsValid)
+            {
+
+
+
+
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                
+                
+                var result = await UserManager.CreateAsync(user,model.Password);
+
+                if (result.Succeeded)
+                {
+
+                    
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    HolidayManagementContext newHolidayManagementContext = new HolidayManagementContext();
+                    UserDetails ud = new UserDetails() { FirstName = model.FirstName, LastName = model.LastName, UserID = user.Id };
+
+                    newHolidayManagementContext.UserDetails.Add(ud);
+
+                    newHolidayManagementContext.SaveChanges();
+                    return Json(new { successed = true, messages="No errors", newUser = ud }, JsonRequestBehavior.DenyGet);
+                }
+                return Json(new { successed = false, messages = "The email address is already in use!" }, JsonRequestBehavior.DenyGet);
+                //AddErrors(result);
+            }
+            return Json(new { successed = false, messages = "Model state is invalid" }, JsonRequestBehavior.DenyGet);
+
+                    
         }
+
+
+
+        /*                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    HolidayManagementContext newHolidayManagementContext = new HolidayManagementContext();
+
+
+                    newHolidayManagementContext.UserDetails.Add(
+                        new UserDetails() { FirstName = model.FirstName, LastName = model.LastName, UserID = user.Id }
+                        );
+
+                    newHolidayManagementContext.SaveChanges();
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                AddErrors(result);*/
+
+
+
+
+
+
+
+
+
+        /*
+        [HttpPost]
+        public ActionResult GetOid(int Oid)
+        {
+            return null;
+        }
+        */
 
         #region Helpers
         // Used for XSRF protection when adding external logins

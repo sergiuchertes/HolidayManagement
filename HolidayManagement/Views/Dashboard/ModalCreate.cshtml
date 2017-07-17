@@ -2,34 +2,44 @@
     Layout = "";
 }
 
-<hr />
-<hr/>
-<hr />
-<hr />
-<hr />
-<hr />
-<span>The team ID is: <span data-bind="foreach: teams">
-    <span data-bind="text: ID"></span>
-    <br>
-    <span data-bind="text: name"></span>
-    <br>
-    </span><br></span>
 
-<hr />
-<hr />
-<hr />
-<hr />
-<span>The passed text is: <span data-bind="text: manageUser.firstName"></span><br></span>
-<span>The second passed text is: <span data-bind="text: manageUser.lastName"></span><br></span>
-<span>The hire date is:<span data-bind="text: manageUser.hireDate"></span> </span>
-<span>the max days is: <span data-bind="text: manageUser.maxDays"></span></span>
-<hr />
-<form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form data-bind="submit: createUser">
     First name:<br>
     <input type="text" name="firstname" data-bind="value: manageUser.firstName"><br>
 
     Last name:<br>
     <input type="text" name="lastname" data-bind="value: manageUser.lastName"><br>
+
+    E-Mail:<br>
+    <input type="text" name="email" data-bind="value: manageUser.email"><br>
+
+    Password:<br>
+    <input type="text" name="password" data-bind="value: manageUser.password"><br>
+
+    Confirm password:<br>
+    <input type="text" name="confirmpassword" data-bind="value: manageUser.confirmPassword"><br>
 
     Hire date:<br>
     <input type="text" name="hiredate" data-bind="value: manageUser.hireDate"><br>
@@ -40,15 +50,19 @@
     Team:<br>
     <input list="browsers"  name="browsers">
     <datalist id="browsers" data-bind="foreach: teams">
-        <option data-bind="value: name">
-       
-       
-       
+        <option data-bind="value: name"></option>
+
+    <!--
+
+        -->   
        
     </datalist> <br>
-
+    <br>
+    Using "options" bindings:<br>
+    <select data-bind="options: teams, optionsText: 'name' "></select><br>
+    <button type="submit" class="btn btn-info btn-lg" >Create</button>
 </form>
 
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create</button>
+
 
 <hr />
