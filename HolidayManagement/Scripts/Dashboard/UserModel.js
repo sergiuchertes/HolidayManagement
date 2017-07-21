@@ -1,6 +1,7 @@
 ﻿function UserModel(data) {
     var _self = this;
     this.email = "initial email";
+    this.Id = "dayOne";
     this.password = "Password1!";
     this.confirmPassword = "Password1!";
     this.firstName="initial name";
@@ -10,6 +11,7 @@
 
     if (data != null) {
         _self.email = data.Email;
+        _self.Id = data.UserID;
         //_self.password = data.password
         _self.firstName = data.FirstName;
         _self.lastName = data.LastName;

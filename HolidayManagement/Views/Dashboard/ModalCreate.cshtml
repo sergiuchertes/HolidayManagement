@@ -16,10 +16,7 @@
 
 
 
-
-
-
-
+<span data-bind="text: variable"></span>
 
 
 
@@ -54,13 +51,17 @@
 
     <!--
 
-        -->   
-       
+        -->
+
     </datalist> <br>
     <br>
     Using "options" bindings:<br>
     <select data-bind="options: teams, optionsText: 'name' "></select><br>
-    <button type="submit" class="btn btn-info btn-lg" >Create</button>
+    <button onclick="SetCreateOption()"  type="button" class="btn btn-info btn-lg" >Create</button>
+    <button onclick="SetEditOption()" type="button" class="btn btn-info btn-lg">Edit</button>
+    
+
+    <!--use ajax-->
 </form>
 
 

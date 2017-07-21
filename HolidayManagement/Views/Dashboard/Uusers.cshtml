@@ -1,4 +1,4 @@
-﻿@model HolidayManagement.Models.DashboardViewModel
+﻿@*  @model HolidayManagement.Models.DashboardViewModel *@
 @{
     Layout = "";
 }
@@ -45,27 +45,35 @@
 <hr />
     <span data-bind="text: test"></span>
    <span>AUX: <span data-bind="text: aux"></span></span>
+<br>
+   <span>SHPAN: <span data-bind="text: variable"></span></span>
     <hr />
     <hr />
 
     <table>
         <thead>
-            <tr><th>First name</th><th>Last name</th></tr>
+            <tr><th>First name</th><th>Last name</th><th>User ID</th></tr>
         </thead>
         <tbody data-bind="foreach: users">
             <tr>
                 <td data-bind="text: firstName"></td>
                 <td data-bind="text: lastName"></td>
+                <td data-bind="value: Id, text: Id, id: Id"></td>
+                <td><button data-bind="value: Id" type="button"  class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="SetEditOption(document.activeElement.value)">Edit</button></td>
+               <!-- <td><button data-bind="value: Id" id="settter" type="button" class="btn btn-default" onclick="SetCreateOption(document.activeElement.value)"></button></td>-->
             </tr>
         </tbody>
     </table>
 
     <hr />
     <hr />
+    <!--  
     <script type="text/javascript" src="~/Scripts/Dashboard/DashboardModel.js"></script>
     <script type="text/javascript" src="~/Scripts/Dashboard/UserModel.js"></script>
     <script type="text/javascript" src="~/Scripts/Dashboard/TeamModel.js"></script>
+    <script type="text/javascript" src="~/Scripts/Dashboard/MonthDayModel.js"></script>
 
     <script type="text/javascript">
         InitializeDashboardModel(@Html.Raw(Json.Encode(Model)));
     </script>
+        -->

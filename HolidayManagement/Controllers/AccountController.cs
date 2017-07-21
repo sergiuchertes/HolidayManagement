@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using HolidayManagement.Models;
 using HolidayManagement.Repository;
 using HolidayManagement.Repository.Models;
+using System.Collections.Generic;
 
 namespace HolidayManagement.Controllers
 {
@@ -286,6 +287,7 @@ namespace HolidayManagement.Controllers
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
@@ -505,6 +507,16 @@ namespace HolidayManagement.Controllers
         }
 
 
+        public ActionResult EditUser(EditUserViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var user = UserManager.FindById(model.UserID);
+                user.UserName = "dsfaf";
+                
+            }
+            return View(); 
+        }
 
         /*                if (result.Succeeded)
                 {
@@ -601,6 +613,8 @@ namespace HolidayManagement.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+
+
         #endregion
     }
 }

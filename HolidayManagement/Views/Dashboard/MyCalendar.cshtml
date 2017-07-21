@@ -1,6 +1,81 @@
-﻿@{
+﻿@*@model HolidayManagement.Models.DashboardViewModel*@
+@{
+
     Layout = "";
 }
+<style>
+    #div1{
+        background-color: green;
+        width: 50px;
+        height: 50px;
+        border-style: solid;
+        border-color: white;
+        border-width: 1px;
+    }
+    #div2{
+        background-color: blueviolet;
+        width: 50px;
+        height: 50px;
+        border-style: solid;
+        border-color: white;
+        border-width: 1px;
+    }
+    #div3{
+                background-color: cadetblue;
+        width: 50px;
+        height: 50px;
+        border-style: solid;
+        border-color: white;
+        border-width: 1px;
+    }
+        #div4{
+                background-color: red;
+        width: 50px;
+        height: 50px;
+        border-style: solid;
+        border-color: white;
+        border-width: 1px;
+    }
+    </style>
+
+<h2 data-bind="text: mm">My Calendar</h2>
+
+<button onclick="dashBoardInstanceVar.setPreviousMonth()">Prev. M. </button>
+
+<div class="container" data-bind="foreach: dashBoardInstanceVar.monthDays">
+    <!-- ko if: (description!='Sunday' && description!='Saturday')&&(isFreeDay!=true)-->
+    <div id="div1" class="col-md-1" data-bind="text: day">
+
+    </div>
+    <!--/ko-->
+
+    <!-- ko if: (description!='Sunday' && description!='Saturday') && (isFreeDay==true)-->
+    <div id="div4" class="col-md-1" data-bind="text: day">
+
+    </div>
+    <!--/ko-->
+
+    <!-- ko if: description=='Sunday'-->
+    <div id="div2" class="col-md-1" data-bind="text: day">
+        </div>
+        <!--/ko-->
+    <!-- ko if: description=='Saturday'-->
+    <div id="div3" class="col-md-1" data-bind="text: day">
+    </div>
+    <!--/ko-->
+</div>
+<button onclick="dashBoardInstanceVar.setNextMonth()">Next. M. </button>
 
 
-<h2>My Calendar</h2>
+<!--
+<script type="text/javascript" src="~/Scripts/Dashboard/DashboardModel.js"></script>
+<script type="text/javascript" src="~/Scripts/Dashboard/UserModel.js"></script>
+<script type="text/javascript" src="~/Scripts/Dashboard/TeamModel.js"></script>
+<script type="text/javascript" src="~/Scripts/Dashboard/MonthDayModel.js"></script>
+
+
+
+<script type="text/javascript">
+        InitializeDashboardModel(@Html.Raw(Json.Encode(Model)));
+</script>
+-->
